@@ -4,4 +4,8 @@
     <RootNamespace>Northwind.Common</RootNamespace>
     <AssemblyName>Northwind.Common</AssemblyName>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NSwag.AspNetCore" Version="13.2.2" />
+    <PackageReference Include="NSwag.Core" Version="13.2.2" />
+  </ItemGroup>
 </Project>

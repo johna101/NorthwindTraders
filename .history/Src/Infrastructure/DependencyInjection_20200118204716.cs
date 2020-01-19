@@ -25,13 +25,13 @@ namespace Northwind.Infrastructure
             services.AddTransient<IDateTime, MachineDateTime>();
             services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
-            // var builder = new SqlConnectionStringBuilder(
-            //     configuration.GetConnectionString("NorthwindDatabase"));
-            // // builder.Password = configuration["DbPassword"];
-            // _connection = builder.ConnectionString;
+            var builder = new SqlConnectionStringBuilder(
+                        Configuration.GetConnectionString("NorthwindDatabase"));
+            builder.Password = Configuration["DbPassword"];
+            _connection = builder.ConnectionString;
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("NorthwindDatabase")));
+                options.UseSqlServer(_connection));
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
